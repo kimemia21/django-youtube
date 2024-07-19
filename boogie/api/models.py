@@ -9,6 +9,15 @@ class Note(models.Model):
         return self.body[0:50]
     class Meta:
         ordering =['-updated']
+        
+class Users(models.Model):
+    userName =models.CharField( max_length=50)    
+    email =models.EmailField(max_length=254)    
+    password =models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.userName
+    
     
     
     
