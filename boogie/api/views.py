@@ -33,14 +33,26 @@ def AddNote(request):
 def UpdateNote(request,pk):
     if request.method =='PUT':
         note =Note.objects.get(id=pk)
-        serializer =NoteSerialzer(note, data=request.POST)
+        serializer =NoteSerialzer(note, data=request.data)
     
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.validated_data)
         else:
             
-            return Response(serializer.errors)                
+            return Response(serializer.errors)
+
+
+@api_view(["DELETE"])
+def NoteDelete(request,pk):
+    if request.method =="DELETE":
+        obj =Note.objects.get(id=pk)
+        obj.delete()
+        return Response("noted Delted")
+        
+           
+        
+               
     
 
 

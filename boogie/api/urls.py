@@ -1,11 +1,13 @@
 from django.urls import path
-from .views import getNotes,getNote,AddNote,UpdateNote
+from .views import getNotes,getNote,AddNote,UpdateNote,NoteDelete
 
 urlpatterns = [
     path('notes/',getNotes),
     path('notes/<str:pk>/',getNote),
-    path('update/<str:pk>/',UpdateNote),
-    path('addNotes',AddNote)
+    path('notes/<str:pk>/update',UpdateNote),
+    path('notes/<str:pk>/delete',NoteDelete),
+    
+    path('notes/create',AddNote)
     
 ]
 
